@@ -11,7 +11,6 @@ import Video from 'react-native-video';
 import React,{Component} from 'react';
 import { StyleSheet, Text, View ,ScrollView ,SafeAreaView} from 'react-native';
 import { WebView } from 'react-native-webview';
-import VideoExampleList from './VideoExampleList';
 import { FlatList } from 'react-native';
 // Within your render function, assuming you have a file called
 // "background.mp4" in your project. You can include multiple videos

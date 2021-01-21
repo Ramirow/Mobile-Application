@@ -40,7 +40,7 @@ const TextComponent =  (props) =>  {
                             <TextInput   onChangeText={(game) => props.OnchangeTextGame(game)}
                             placeholder="Game" style={{justifyContent: 'flex-end'}} />
                 </View>
-                        <Text style = {{textAlign:'center' ,marginTop:10}}> {props.game}</Text>     
+                        <Text style = {{marginLeft:10 ,marginTop:10}}> {props.game}</Text>     
             </View>  
             </View>
             // </ScrollView>      

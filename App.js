@@ -23,8 +23,9 @@ import VideoList from './components/VideoList';
 import Yout from './components/Yout';
 import VideoExample from './components/VideoExample';
 import { WebView } from 'react-native-webview';
-import VideoExampleList from './components/VideoExampleList';
 import { FlatList } from 'react-native';
+import DateComponent from './components/DateComponent';
+
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
         videos:[],
         term:[],
         videoIds:[],
+        date: '2020-02-10',
     };
 }
 
@@ -61,11 +63,12 @@ PressSearch = (term) => {
    if (this.state.selectedLabel===''){
     alert('Please Fill The label');
   }
-  else if (this.state.text1 === ''){
+  else if (this.state.game === ''){
     alert('Please Fill Text one');
-  } else if (this.state.text2 === ''){
-    alert('Please Fill Text Two');
-  } else {
+  // } else if (this.state.text2 === ''){
+  //   alert('Please Fill Text Two');
+  // } 
+  }else {
 this.searchYT(term);
 }
 }
@@ -73,7 +76,7 @@ this.searchYT(term);
 searchYT = term => {
 this.setState({loading:true});
 YTSearch({key:API_KEY,term}, videos => {
-// alert(term);
+alert(term);
 // console.log(videos[0].id.videoId);
 // console.log(videos);
 this.setState({loading:false,
@@ -86,40 +89,35 @@ this.state.videoIds.push(video.id.videoId);
 // for (let i = 0;i <= 5;i++){
 //   this.state.videoIds.push(videos[i].id.videoId);
 // }
-console.log(this.state.videoIds);
+// console.log(this.state.videoIds);
 });}
 
-
+DateChange = (date) => {
+  this.setState({date:date});
+}
 
   render(){
-    const {team1,team2,game,selectedLabel} = this.state;
+    const {team1,team2,game,selectedLabel,date} = this.state;
     const {loading,videos,term,videoIds} = this.state;
   return (
-    // <View style={styles.container}>
     <View style={{flex: 1}}>
       <View style = {{hight: 200}}>
-   {/* <SafeAreaView style={styles.container} >
-     <ScrollView style={styles.scrollView}> */}
-      <AppHeader />
-      <Menu selectedLabel = {this.state.selectedLabel} Show = {this.Show}/> 
-      <TextComponent    OnchangeTextOne = {this.changeTextOne} OnchangeTexttwo = {this.changeTextTwo} text1 = {team1} 
-      text2 = {team2} game = {game} OnchangeTextGame = {this.changeGame} />
-      {/* <StatusBar style="auto" /> */}
+            <AppHeader />
+                 <Menu selectedLabel = {this.state.selectedLabel} Show = {this.Show}/> 
+                 <TextComponent    OnchangeTextOne = {this.changeTextOne} OnchangeTexttwo = {this.changeTextTwo} text1 = {team1} 
+                          text2 = {team2} game = {game} OnchangeTextGame = {this.changeGame} />
+      
       <View>
-        <SearchBar loading = {loading} game = {game}
-        text1 = {team1} text2 = {team2} selectedLabel = {this.state.selectedLabel} 
-        onPressSearch = {this.PressSearch}/>
+      <DateComponent date = {this.state.date} onChangeDate = {this.DateChange} />
       </View>
-      </View>
-
-      {/* <ReactYouTube /> */}
-      {/* <VideoList videos = {videos} term = {term} /> */}
-      {/* <VideoExample videos = {videos} term = {term} /> */}
-       {/* <View> */}
-       < VideoExample ids = {videoIds} />
-       {/* </View> */}
-       {/* </ScrollView>
-      </SafeAreaView> */}
+  
+         <SearchBar loading = {loading} game = {game}
+           text1 = {team1} text2 = {team2} selectedLabel = {this.state.selectedLabel} 
+           onPressSearch = {this.PressSearch} date = {date}/>
+          </View>
+      
+         < VideoExample ids = {videoIds} />
+       
       </View>
       
 
