@@ -25,26 +25,25 @@ import VideoExample from './components/VideoExample';
 import { WebView } from 'react-native-webview';
 import { FlatList } from 'react-native';
 import DateComponent from './components/DateComponent';
-
-
+import GameComponent from './components/GameComponent';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
         team1:'',
         team2:'',
-        game:'',
+        ligue:'',
         selectedLabel:'',
         loading:false,
         videos:[],
         term:[],
         videoIds:[],
-        date: '2020-02-10',
+        date: '',
     };
 }
 
-changeGame = (game) => {
-  this.setState({game:game});
+changeLigue = (ligue) => {
+  this.setState({ligue:ligue});
 }
 changeTextOne = (team1) => {
     this.setState({ team1: team1});
@@ -65,9 +64,8 @@ PressSearch = (term) => {
   }
   else if (this.state.game === ''){
     alert('Please Fill Text one');
-  // } else if (this.state.text2 === ''){
-  //   alert('Please Fill Text Two');
-  // } 
+  } else if (this.state.ligue === ''){
+    alert('Please Fill The Ligue'); 
   }else {
 this.searchYT(term);
 }
@@ -86,10 +84,6 @@ this.setState({loading:false,
 videos.map(video => {
 this.state.videoIds.push(video.id.videoId);
 })
-// for (let i = 0;i <= 5;i++){
-//   this.state.videoIds.push(videos[i].id.videoId);
-// }
-// console.log(this.state.videoIds);
 });}
 
 DateChange = (date) => {
@@ -97,21 +91,29 @@ DateChange = (date) => {
 }
 
   render(){
-    const {team1,team2,game,selectedLabel,date} = this.state;
+    const {team1,team2,ligue,selectedLabel,date} = this.state;
     const {loading,videos,term,videoIds} = this.state;
   return (
+    <React.Fragment>
     <View style={{flex: 1}}>
-      <View style = {{hight: 200}}>
+      <View style = {{hight: 200}}> 
             <AppHeader />
                  <Menu selectedLabel = {this.state.selectedLabel} Show = {this.Show}/> 
                  <TextComponent    OnchangeTextOne = {this.changeTextOne} OnchangeTexttwo = {this.changeTextTwo} text1 = {team1} 
-                          text2 = {team2} game = {game} OnchangeTextGame = {this.changeGame} />
-      
+                          text2 = {team2}  />
+
+
+      {/* <View style = {{height:10,marginBottom:20}}>
+              <Text style = {{marginBottom:10}}> Choose your game  </Text>    
+      </View>                                  */}
+      <ScrollView>
+      <GameComponent style = {{height:75}}  OnchangeLigue = {this.changeLigue} selectedItems = {ligue}/> 
       <View>
-      <DateComponent date = {this.state.date} onChangeDate = {this.DateChange} />
+        
+      <DateComponent style = {{height:100}} date = {this.state.date} onChangeDate = {this.DateChange} />
       </View>
-  
-         <SearchBar loading = {loading} game = {game}
+      </ScrollView>
+         <SearchBar loading = {loading} game = {ligue}
            text1 = {team1} text2 = {team2} selectedLabel = {this.state.selectedLabel} 
            onPressSearch = {this.PressSearch} date = {date}/>
           </View>
@@ -119,11 +121,13 @@ DateChange = (date) => {
          < VideoExample ids = {videoIds} />
        
       </View>
+      </React.Fragment>
       
 
   );
 }
 }
+
 
 const styles = StyleSheet.create({
   container: {

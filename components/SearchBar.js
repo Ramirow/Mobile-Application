@@ -11,7 +11,7 @@ import {Button} from 'react-native-elements';
 return (
 <View> 
 <Button title = {props.loading ? 'Loading ...' : 'Search'} buttonStyle = {styles.buttonStyle}
-      onPress = {({search = props.selectedLabel + ' ' + props.text1 + ' against ' + props.text2 + ' ' + props.game + ' ' + props.date}) => props.onPressSearch(search)}
+      onPress = {({search = props.selectedLabel + ' ' + props.text1 + ' VS ' + props.text2 + ' ' + props.game.toString() + ' ' + props.date}) => props.onPressSearch(search)}
       />
 </View>    
 )};

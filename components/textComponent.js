@@ -34,14 +34,7 @@ const TextComponent =  (props) =>  {
                       <Text  style = {{justifyContent: 'center', alignItems: 'center',fontWeight: 'bold',textAlign: 'center' }} > VS   </Text>
                       <Text > {props.text2} </Text> 
                 </View>
-                <View style = {{height:90}}>
-                <Text style = {{marginBottom:10}}> Choose your game  </Text>
-                <View style={{flex:1,borderRadius: 10,borderWidth: 2,textAlign: 'center', marginLeft:7}}>
-                            <TextInput   onChangeText={(game) => props.OnchangeTextGame(game)}
-                            placeholder="Game" style={{justifyContent: 'flex-end'}} />
-                </View>
-                        <Text style = {{marginLeft:10 ,marginTop:10}}> {props.game}</Text>     
-            </View>  
+                 
             </View>
             // </ScrollView>      
         );

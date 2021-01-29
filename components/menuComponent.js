@@ -22,7 +22,7 @@ return (
          onValueChange={props.Show.bind()}
          >
              <React.Item label = "Select item" value = "Select" color = "red" /> 
-             <React.Item label = "Highlight" value ="Highlight" />     
+             <React.Item label = "Highlights" value ="Highlights" />     
              <React.Item label = "Goals" value = "Goals" /> 
           </Picker>  
           <Text style = {styles.text}> {props.selectedLabel} </Text> 
