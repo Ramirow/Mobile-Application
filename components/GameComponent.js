@@ -5,31 +5,31 @@ import { View } from 'react-native';
 import MultiSelect from 'react-native-multiple-select';
  
 const items = [{
-    id: '92iijs7yta',
+    id: 'Europa League',
     name: 'Europa League'
   }, {
-    id: 'a0s0a8ssbsd',
+    id: 'Bundesliga',
     name: 'Bundesliga'
   }, {
-    id: '16hbajsabsd',
+    id: 'Premier League',
     name: 'Premier League'
   }, {
-    id: 'nahs75a5sg',
+    id: 'Ligue 1',
     name: 'Ligue 1'
   }, {
-    id: '667atsas',
+    id: 'Serie A',
     name: 'Serie A'
   }, {
-    id: 'hsyasajs',
+    id: 'Eredivisie',
     name: 'Eredivisie'
   }, {
-    id: 'djsjudksjd',
+    id: 'Primeira Liga',
     name: 'Primeira Liga'
   }, {
-    id: 'sdhyaysdj',
+    id: 'La Liga',
     name: 'La Liga'
   }, {
-    id: 'suudydjsjd',
+    id: 'Champions league',
     name: 'Champions league'
     }
 ];
@@ -44,11 +44,7 @@ const  GameComponent = (props) =>  {
 
  
   
-  const onSelectedItemsChange = selectedItems => {
-    // this.setState({ selectedItems:'' });
-    // this.setState({ selectedItems });
-    props.OnchangeLigue(selectedItems);
-  };
+  
  
   // render() {
     // const { selectedItems } = this.state;
@@ -61,7 +57,7 @@ const  GameComponent = (props) =>  {
           items={items}
           uniqueKey="id"
           // ref={(component) => { this.multiSelect = component }}
-          onSelectedItemsChange={onSelectedItemsChange}
+          onSelectedItemsChange={props.OnchangeLigue}
           selectedItems={props.selectedItems}
           selectText="Choose Tournament .."
           searchInputPlaceholderText="Search Ligue..."

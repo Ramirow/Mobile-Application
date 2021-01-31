@@ -43,6 +43,7 @@ class App extends Component {
 }
 
 changeLigue = (ligue) => {
+  console.log(typeof ligue[0]);
   this.setState({ligue:ligue});
 }
 changeTextOne = (team1) => {
@@ -102,10 +103,6 @@ DateChange = (date) => {
                  <TextComponent    OnchangeTextOne = {this.changeTextOne} OnchangeTexttwo = {this.changeTextTwo} text1 = {team1} 
                           text2 = {team2}  />
 
-
-      {/* <View style = {{height:10,marginBottom:20}}>
-              <Text style = {{marginBottom:10}}> Choose your game  </Text>    
-      </View>                                  */}
       <ScrollView>
       <GameComponent style = {{height:75}}  OnchangeLigue = {this.changeLigue} selectedItems = {ligue}/> 
       <View>

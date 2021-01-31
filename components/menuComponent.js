@@ -18,14 +18,14 @@ return (
     <View>
           <Text style = {{marginLeft:5, marginTop:5}}>Select Goals or Highlights </Text>
          <Picker 
-         selectedLabel = {props.selectedLabel}
+         selectedValue = {props.selectedLabel}
          onValueChange={props.Show.bind()}
          >
-             <React.Item label = "Select item" value = "Select" color = "red" /> 
+             {/* <React.Item label = "Select item" value = "Select" color = "black" />  */}
              <React.Item label = "Highlights" value ="Highlights" />     
              <React.Item label = "Goals" value = "Goals" /> 
           </Picker>  
-          <Text style = {styles.text}> {props.selectedLabel} </Text> 
+          {/* <Text style = {styles.text}> {props.selectedLabel} </Text>  */}
           
      </View>
       );
